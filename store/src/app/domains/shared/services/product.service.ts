@@ -11,7 +11,24 @@ export class ProductService {
 
   private http = inject(HttpClient)
 
-  getProducts(){
-    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products')
+  getProducts(category? : string){
+
+    if(category){
+      console.log( typeof(category))
+      return this.http.get<Product[]>(`https://fakestoreapi.com/products/category/${category}`)
+
+
+    }
+    console.log(category)
+    return this.http.get<Product[]>(`https://fakestoreapi.com/products`)
   }
+  getOne(id: string){
+    return this.http.get<Product>(`https://fakestoreapi.com/products/${id}`)
+  }
+  // getProducts(){
+  //   return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products')
+  // }
+  // getOne(id: string){
+  //   return this.http.get<Product>(`https://api.escuelajs.co/api/v1/products/${id}`)
+  // }
 }

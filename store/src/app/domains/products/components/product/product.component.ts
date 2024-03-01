@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product}  from './../../../../models/product.interface'
 import { CommonModule } from '@angular/common';
+import { RouterLinkWithHref } from '@angular/router';
+import { LimitTitlePipe } from '@shared/pipes/limit-title.pipe';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLinkWithHref, LimitTitlePipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

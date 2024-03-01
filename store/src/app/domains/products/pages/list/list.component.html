@@ -1,15 +1,41 @@
 
-<div class="container mx-auto">
+<div class="flex">
 
 
-  <app-header  ></app-header>
-  <div class="grid grid-cols-4 gap-8 p-5">
-    @for (product of productToCart() ; track $index;) {
 
-      <app-product [product]="product" (addToCart)="addToCart($event)" ></app-product>
+  <div class="w-60 p-5 font-bold " style="background-color: #f9f6f4;">
+    <ul  >
 
-    }
+        <li>
+          <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="underline" routerLink="/"  >All</a>
 
+        </li>
+        @for (category of categories(); track $index) {
+
+        <li class="mt-5" >
+          <a  routerLinkActive="underline"
+           routerLink="/" [queryParams]="{category : category}"  >{{category }}</a>
+        </li>
+        <!-- <li>
+          <a [routerLink]="['Category' , category]"  >{{category}}</a>
+        </li> -->
+      }
+      </ul>
 
   </div>
+  <div class=" flex space-x-4 p-5 " >
+
+
+    <div class="grid grid-cols-3 gap-8 w-full justify-center"  >
+      @for (product of productToCart() ; track $index;) {
+
+        <app-product [product]="product" (addToCart)="addToCart($event)" ></app-product>
+
+      }
+
+
+    </div>
+  </div>
+
+
 </div>
